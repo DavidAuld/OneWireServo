@@ -1,0 +1,519 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="14.0">
+  <PropertyGroup>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>7.0</ProjectVersion>
+    <ToolchainName>com.Atmel.AVRGCC8.CPP</ToolchainName>
+    <ProjectGuid>8ac167f2-b265-4b5b-a47a-36307b9b31bb</ProjectGuid>
+    <avrdevice>attiny85</avrdevice>
+    <avrdeviceseries>none</avrdeviceseries>
+    <OutputType>StaticLibrary</OutputType>
+    <Language>CPP</Language>
+    <OutputFileName>lib$(MSBuildProjectName)</OutputFileName>
+    <OutputFileExtension>.a</OutputFileExtension>
+    <OutputDirectory>$(MSBuildProjectDirectory)\$(Configuration)</OutputDirectory>
+    <Name>ArduinoCore</Name>
+    <ArduinoIdeDir>C:\Program Files (x86)\Arduino</ArduinoIdeDir>
+    <ArduinoProjectType>Core</ArduinoProjectType>
+    <ToolchainFlavour>Native</ToolchainFlavour>
+    <AssemblyName>ArduinoCore</AssemblyName>
+    <RootNamespace>ArduinoCore</RootNamespace>
+    <KeepTimersRunning>true</KeepTimersRunning>
+    <OverrideVtor>false</OverrideVtor>
+    <CacheFlash>true</CacheFlash>
+    <ProgFlashFromRam>true</ProgFlashFromRam>
+    <RamSnippetAddress />
+    <UncachedRange />
+    <preserveEEPROM>true</preserveEEPROM>
+    <OverrideVtorValue />
+    <BootSegment>2</BootSegment>
+    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <AsfFrameworkConfig>
+      <framework-data xmlns="">
+  <options />
+  <configurations />
+  <files />
+  <documentation help="" />
+  <offline-documentation help="" />
+  <dependencies>
+    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.32.0" />
+  </dependencies>
+</framework-data>
+    </AsfFrameworkConfig>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <ToolchainSettings>
+      <AvrGccCpp>
+  <avrgcc.common.Device>-mmcu=attiny85 -B "%24(PackRepoDir)\atmel\ATtiny_DFP\1.1.102\gcc\dev\attiny85"</avrgcc.common.Device>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>NDEBUG</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>ARDUINO=106012</Value>
+      <Value>ARDUINO_AVR_DIGISPARK</Value>
+      <Value>ARDUINO_ARCH_AVR</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>%24(PackRepoDir)\atmel\ATtiny_DFP\1.1.102\include</Value>
+      <Value>..\include\Release</Value>
+      <Value>..\include\__vm</Value>
+      <Value>..\include\libraries\pid_v1</Value>
+      <Value>..\include\libraries\encoder-master</Value>
+      <Value>..\include\libraries\encoder-master\utility</Value>
+      <Value>..\include\libraries\enableinterrupt</Value>
+      <Value>..\include\libraries\enableinterrupt\examples\SimpleWithLibrary</Value>
+      <Value>..\include\libraries\enableinterrupt\utility</Value>
+      <Value>..\include\libraries\onewireslave</Value>
+      <Value>..\include\libraries\onewireslave\examples\DS2890</Value>
+      <Value>..\include\core</Value>
+      <Value>..\include\variants\digispark</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.OtherFlags>-fno-threadsafe-statics</avrgcc.compiler.optimization.OtherFlags>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.compiler.warnings.InhibitAllWarnings>True</avrgcc.compiler.warnings.InhibitAllWarnings>
+  <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -std=gnu11</avrgcc.compiler.miscellaneous.OtherFlags>
+  <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcccpp.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>NDEBUG</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>ARDUINO=106012</Value>
+      <Value>ARDUINO_AVR_DIGISPARK</Value>
+      <Value>ARDUINO_ARCH_AVR</Value>
+    </ListValues>
+  </avrgcccpp.compiler.symbols.DefSymbols>
+  <avrgcccpp.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>%24(PackRepoDir)\atmel\ATtiny_DFP\1.1.102\include</Value>
+      <Value>..\include\Release</Value>
+      <Value>..\include\__vm</Value>
+      <Value>..\include\libraries\pid_v1</Value>
+      <Value>..\include\libraries\encoder-master</Value>
+      <Value>..\include\libraries\encoder-master\utility</Value>
+      <Value>..\include\libraries\enableinterrupt</Value>
+      <Value>..\include\libraries\enableinterrupt\examples\SimpleWithLibrary</Value>
+      <Value>..\include\libraries\enableinterrupt\utility</Value>
+      <Value>..\include\libraries\onewireslave</Value>
+      <Value>..\include\libraries\onewireslave\examples\DS2890</Value>
+      <Value>..\include\core</Value>
+      <Value>..\include\variants\digispark</Value>
+    </ListValues>
+  </avrgcccpp.compiler.directories.IncludePaths>
+  <avrgcccpp.compiler.optimization.level>Optimize for size (-Os)</avrgcccpp.compiler.optimization.level>
+  <avrgcccpp.compiler.optimization.OtherFlags>-fno-threadsafe-statics</avrgcccpp.compiler.optimization.OtherFlags>
+  <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+  <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
+  <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+  <avrgcccpp.compiler.warnings.InhibitAllWarnings>True</avrgcccpp.compiler.warnings.InhibitAllWarnings>
+  <avrgcccpp.compiler.miscellaneous.OtherFlags>-std=gnu++11</avrgcccpp.compiler.miscellaneous.OtherFlags>
+  <avrgcccpp.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </avrgcccpp.linker.libraries.Libraries>
+  <avrgcccpp.linker.miscellaneous.LinkerFlags>-Os</avrgcccpp.linker.miscellaneous.LinkerFlags>
+  <avrgcccpp.assembler.general.IncludePaths>
+    <ListValues>
+      <Value>%24(PackRepoDir)\atmel\ATtiny_DFP\1.1.102\include</Value>
+    </ListValues>
+  </avrgcccpp.assembler.general.IncludePaths>
+  <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
+</AvrGccCpp>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <ToolchainSettings>
+      <AvrGccCpp>
+  <avrgcc.common.Device>-mmcu=attiny85 -B "%24(PackRepoDir)\atmel\ATtiny_DFP\1.1.102\gcc\dev\attiny85"</avrgcc.common.Device>
+  <avrgcc.common.outputfiles.hex>True</avrgcc.common.outputfiles.hex>
+  <avrgcc.common.outputfiles.lss>True</avrgcc.common.outputfiles.lss>
+  <avrgcc.common.outputfiles.eep>True</avrgcc.common.outputfiles.eep>
+  <avrgcc.common.outputfiles.srec>True</avrgcc.common.outputfiles.srec>
+  <avrgcc.common.outputfiles.usersignatures>False</avrgcc.common.outputfiles.usersignatures>
+  <avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcc.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcc.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcc.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>DEBUG</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>ARDUINO=106012</Value>
+      <Value>ARDUINO_AVR_DIGISPARK</Value>
+      <Value>ARDUINO_ARCH_AVR</Value>
+    </ListValues>
+  </avrgcc.compiler.symbols.DefSymbols>
+  <avrgcc.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>%24(PackRepoDir)\atmel\ATtiny_DFP\1.1.102\include</Value>
+      <Value>..\include\Release</Value>
+      <Value>..\include\__vm</Value>
+      <Value>..\include\libraries\pid_v1</Value>
+      <Value>..\include\libraries\encoder-master</Value>
+      <Value>..\include\libraries\encoder-master\utility</Value>
+      <Value>..\include\libraries\enableinterrupt</Value>
+      <Value>..\include\libraries\enableinterrupt\examples\SimpleWithLibrary</Value>
+      <Value>..\include\libraries\enableinterrupt\utility</Value>
+      <Value>..\include\libraries\onewireslave</Value>
+      <Value>..\include\libraries\onewireslave\examples\DS2890</Value>
+      <Value>..\include\core</Value>
+      <Value>..\include\variants\digispark</Value>
+    </ListValues>
+  </avrgcc.compiler.directories.IncludePaths>
+  <avrgcc.compiler.optimization.level>Optimize for size (-Os)</avrgcc.compiler.optimization.level>
+  <avrgcc.compiler.optimization.OtherFlags>-fno-threadsafe-statics</avrgcc.compiler.optimization.OtherFlags>
+  <avrgcc.compiler.optimization.PackStructureMembers>True</avrgcc.compiler.optimization.PackStructureMembers>
+  <avrgcc.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcc.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcc.compiler.optimization.DebugLevel>Default (-g2)</avrgcc.compiler.optimization.DebugLevel>
+  <avrgcc.compiler.warnings.AllWarnings>True</avrgcc.compiler.warnings.AllWarnings>
+  <avrgcc.compiler.warnings.InhibitAllWarnings>True</avrgcc.compiler.warnings.InhibitAllWarnings>
+  <avrgcc.compiler.miscellaneous.OtherFlags>-std=gnu99 -std=gnu11</avrgcc.compiler.miscellaneous.OtherFlags>
+  <avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultCharTypeUnsigned>
+  <avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>True</avrgcccpp.compiler.general.ChangeDefaultBitFieldUnsigned>
+  <avrgcccpp.compiler.symbols.DefSymbols>
+    <ListValues>
+      <Value>DEBUG</Value>
+      <Value>F_CPU=16000000L</Value>
+      <Value>ARDUINO=106012</Value>
+      <Value>ARDUINO_AVR_DIGISPARK</Value>
+      <Value>ARDUINO_ARCH_AVR</Value>
+    </ListValues>
+  </avrgcccpp.compiler.symbols.DefSymbols>
+  <avrgcccpp.compiler.directories.IncludePaths>
+    <ListValues>
+      <Value>%24(PackRepoDir)\atmel\ATtiny_DFP\1.1.102\include</Value>
+      <Value>..\include\Release</Value>
+      <Value>..\include\__vm</Value>
+      <Value>..\include\libraries\pid_v1</Value>
+      <Value>..\include\libraries\encoder-master</Value>
+      <Value>..\include\libraries\encoder-master\utility</Value>
+      <Value>..\include\libraries\enableinterrupt</Value>
+      <Value>..\include\libraries\enableinterrupt\examples\SimpleWithLibrary</Value>
+      <Value>..\include\libraries\enableinterrupt\utility</Value>
+      <Value>..\include\libraries\onewireslave</Value>
+      <Value>..\include\libraries\onewireslave\examples\DS2890</Value>
+      <Value>..\include\core</Value>
+      <Value>..\include\variants\digispark</Value>
+    </ListValues>
+  </avrgcccpp.compiler.directories.IncludePaths>
+  <avrgcccpp.compiler.optimization.level>Optimize for size (-Os)</avrgcccpp.compiler.optimization.level>
+  <avrgcccpp.compiler.optimization.OtherFlags>-fno-threadsafe-statics</avrgcccpp.compiler.optimization.OtherFlags>
+  <avrgcccpp.compiler.optimization.PackStructureMembers>True</avrgcccpp.compiler.optimization.PackStructureMembers>
+  <avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>True</avrgcccpp.compiler.optimization.AllocateBytesNeededForEnum>
+  <avrgcccpp.compiler.optimization.DebugLevel>Default (-g2)</avrgcccpp.compiler.optimization.DebugLevel>
+  <avrgcccpp.compiler.warnings.AllWarnings>True</avrgcccpp.compiler.warnings.AllWarnings>
+  <avrgcccpp.compiler.warnings.InhibitAllWarnings>True</avrgcccpp.compiler.warnings.InhibitAllWarnings>
+  <avrgcccpp.compiler.miscellaneous.OtherFlags>-std=gnu++11</avrgcccpp.compiler.miscellaneous.OtherFlags>
+  <avrgcccpp.linker.libraries.Libraries>
+    <ListValues>
+      <Value>libm</Value>
+    </ListValues>
+  </avrgcccpp.linker.libraries.Libraries>
+  <avrgcccpp.linker.miscellaneous.LinkerFlags>-Os</avrgcccpp.linker.miscellaneous.LinkerFlags>
+  <avrgcccpp.assembler.general.IncludePaths>
+    <ListValues>
+      <Value>%24(PackRepoDir)\atmel\ATtiny_DFP\1.1.102\include</Value>
+    </ListValues>
+  </avrgcccpp.assembler.general.IncludePaths>
+  <avrgcccpp.assembler.debugging.DebugLevel>Default (-Wa,-g)</avrgcccpp.assembler.debugging.DebugLevel>
+</AvrGccCpp>
+    </ToolchainSettings>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="include\core\Arduino.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\binary.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\core_adc.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\core_build_options.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\core_macros.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\core_pins.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\core_timers.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\HardwareSerial.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\new.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\pins_arduino.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\Print.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\PwmTimer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\Stream.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\TinyDebugSerial.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\ToneTimer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\UserTimer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\WCharacter.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\WConstants.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\wiring.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\wiring_private.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\WProgram.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\core\WString.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\EnableInterrupt.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\examples\SimpleWithLibrary\Useless.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_External1284.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_External2560.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_External328.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_ExternalLeonardo.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_ExternalTiny24.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_ExternalTiny25.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_PinChange1284.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_PinChange2560.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_PinChange328.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_PinChangeLeonardo.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_PinChangeTiny24.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_PinChangeTiny25.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_pindefs_speed.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_porta_speed.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_portb_speed.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_portc_speed.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_portd_speed.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_portj_speed.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\enableinterrupt\utility\ei_portk_speed.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\encoder-master\Encoder.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\encoder-master\utility\direct_pin_read.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\encoder-master\utility\interrupt_config.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\encoder-master\utility\interrupt_pins.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\onewireslave\examples\DS2890\dummy.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\onewireslave\examples\DS2890\mcp455x.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\onewireslave\examples\DS2890\Potentiometer.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\onewireslave\LowLevel.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\onewireslave\OneWireSlave.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\libraries\pid_v1\PID_v1.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\variants\digispark\pins_arduino.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="include\__vm\.OneWireIO.vsarduino.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\HardwareSerial.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\main.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\new.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\pins_arduino.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\Print.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\TinyDebugSerial.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\TinyDebugSerial115200.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\TinyDebugSerial38400.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\TinyDebugSerial9600.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\TinyDebugSerialErrors.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\Tone.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\WInterrupts.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\wiring.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\wiring_analog.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\wiring_digital.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\wiring_pulse.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\wiring_shift.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\WMath.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\core\WString.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\libraries\enableinterrupt\examples\SimpleWithLibrary\Useless.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\libraries\encoder-master\Encoder.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\libraries\onewireslave\examples\DS2890\mcp455x.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\libraries\onewireslave\utility\OneWireSlave.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\libraries\pid_v1\PID_v1.cpp">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="src\variants\pins_arduino.c">
+      <SubType>compile</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="include\" />
+    <Folder Include="include\core\" />
+    <Folder Include="include\libraries\" />
+    <Folder Include="include\libraries\enableinterrupt\" />
+    <Folder Include="include\libraries\enableinterrupt\examples\" />
+    <Folder Include="include\libraries\enableinterrupt\examples\SimpleWithLibrary\" />
+    <Folder Include="include\libraries\enableinterrupt\utility\" />
+    <Folder Include="include\libraries\encoder-master\" />
+    <Folder Include="include\libraries\encoder-master\utility\" />
+    <Folder Include="include\libraries\onewireslave\" />
+    <Folder Include="include\libraries\onewireslave\examples\" />
+    <Folder Include="include\libraries\onewireslave\examples\DS2890\" />
+    <Folder Include="include\libraries\pid_v1\" />
+    <Folder Include="include\Release\" />
+    <Folder Include="include\variants\" />
+    <Folder Include="include\variants\digispark\" />
+    <Folder Include="include\__vm\" />
+    <Folder Include="src\" />
+    <Folder Include="src\core\" />
+    <Folder Include="src\libraries\" />
+    <Folder Include="src\libraries\enableinterrupt\" />
+    <Folder Include="src\libraries\enableinterrupt\examples\" />
+    <Folder Include="src\libraries\enableinterrupt\examples\SimpleWithLibrary\" />
+    <Folder Include="src\libraries\encoder-master\" />
+    <Folder Include="src\libraries\onewireslave\" />
+    <Folder Include="src\libraries\onewireslave\examples\" />
+    <Folder Include="src\libraries\onewireslave\examples\DS2890\" />
+    <Folder Include="src\libraries\onewireslave\utility\" />
+    <Folder Include="src\libraries\pid_v1\" />
+    <Folder Include="src\variants\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\Release\OneWireIO.hex">
+      <SubType>compile</SubType>
+    </None>
+    <None Include="include\Release\OneWireIO.ino.hex">
+      <SubType>compile</SubType>
+    </None>
+  </ItemGroup>
+  <Import Project="$(AVRSTUDIO_EXE_PATH)\\Vs\\Compiler.targets" />
+</Project>
