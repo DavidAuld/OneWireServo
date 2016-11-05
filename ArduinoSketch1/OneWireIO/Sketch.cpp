@@ -4,18 +4,9 @@
 /*End of auto generated code by Atmel studio */
 
 
-#define INCLUDE_PID
-#define INCLUDE_ENCODER
 
-#ifdef INCLUDE_PID
 #include <PID_v1.h>
-#endif
-
-#ifdef INCLUDE_ENCODER
 #include <Encoder.h>
-#endif
-
-
 #include <EnableInterrupt.h>
 #include <OneWireSlave.h>
 #include "Arduino.h"
@@ -25,18 +16,45 @@
 
 
 // This is the pin that will be used for one-wire data (depending on your arduino model, you are limited to a few choices, because some pins don't have complete interrupt support)
-// On Arduino Uno, you can use pin 2 or pin 3
+// On ATTiny85 you can use pin 2
 Pin oneWireData(2);
-
-Pin led(13);
 
 // This is the ROM the arduino will respond to, make sure it doesn't conflict with another device
 const byte owROM[7] = { 0x28, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02 };
 
-// This sample emulates a DS18B20 device (temperature sensor), so we start by defining the available commands
-const byte DS18B20_START_CONVERSION = 0x44;
-const byte DS18B20_READ_SCRATCHPAD = 0xBE;
-const byte DS18B20_WRITE_SCRATCHPAD = 0x4E;
+// define the available commands
+
+//The number of bytes read or written can be between 1 and 8.
+const byte READ_SCRATCHPAD = 0xBE;
+const byte WRITE_SCRATCHPAD = 0x4E;
+
+//The scratchpad should contain the following content before the above command is sent to the device:
+//Byte 0: The start address of where the data bytes should be retrieved from in the user EEPROM.
+//Byte 1: The number of bytes to be retrieved from the user EEPROM (max of 8 bytes).
+const byte COPY_EEPROM_TO_SCRATCHPAD = 0x37;
+//The scratchpad should contain the following content before the above command is sent to the device:
+//Byte 0: The start address of where the data bytes should be stored in the user EEPROM.
+//Byte 1: The number of bytes to be stored to the user EEPROM (max of 8 bytes).
+const byte COPY_SCRATCHPAD_TO_EEPROM = 0x39;
+
+//The scratchpad should contain the following content before the above command is sent to the device:
+//Byte 0: The start address of where the data bytes should be retrieved from in the user RAM.
+//Byte 1: The number of bytes to be retrieved from the user RAM (max of 8 bytes).
+const byte COPY_RAM_TO_SCRATCHPAD = 0x11;
+//The scratchpad should contain the following content before the above command is sent to the device:
+//Byte 0: The start address of where the data bytes should be stored in the user RAM.
+//Byte 1: The number of bytes to be stored to the user RAM (max of 8 bytes).
+const byte COPY_SCRATCHPAD_TO_RAM = 0x13;
+
+//Re-initialize the servo PID values to their default
+const byte SERVO_INITIALIZE = 0x03;
+//Home the servo by reversing until it stops by stalling in the fully up position
+const byte SERVO_HOME = 0x05;
+//Copy the scratchpad to the servo program memory, then execute the program
+const byte SERVO_RUN_SCRATCHPAD = 0x07;
+//Poll the status of the servo
+const byte SERVO_STATUS = 0x09;
+
 
 // TODO:
 // - handle configuration (resolution, alarms)
@@ -45,38 +63,34 @@ enum DeviceState
 {
 	DS_WaitingReset,
 	DS_WaitingCommand,
+	DS_WaitingByte,
 	DS_ConvertingTemperature,
 	DS_TemperatureConverted,
 };
 volatile DeviceState state = DS_WaitingReset;
 
-// scratchpad, with the CRC byte at the end
+// 8-byte scratchpad, with the CRC byte at the end
 volatile byte scratchpad[9];
+volatile byte scratchpad_index;
 
 volatile unsigned long conversionStartTime = 0;
 
 // This function will be called each time the OneWire library has an event to notify (reset, error, byte received)
 void owReceive(OneWireSlave::ReceiveEvent evt, byte data);
 
-#ifdef INCLUDE_PID
 //Define PID Variables we'll be connecting to
 double Setpoint, Input, Output;
 
 //Specify the links and initial tuning parameters
 double Kp = 2, Ki = 5, Kd = 1;
 PID myPID(&Input, &Output, &Setpoint, Kp, Ki, Kd, DIRECT);
-#endif
 
-#ifdef INCLUDE_ENCODER
+//Initialize the rotary encoder library
 Encoder myEnc(3, 4);
-#endif
+
 
 void setup()
 {
-	//led.outputMode();
-	//led.writeLow();
-
-#ifdef INCLUDE_PID
 	// Setup the OneWire library
 	OWSlave.setReceiveCallback(&owReceive);
 	OWSlave.begin(owROM, oneWireData.getPinNumber());
@@ -84,8 +98,6 @@ void setup()
 	//Setup the PID library
 	//turn the PID on
 	myPID.SetMode(AUTOMATIC);
-#endif
-
 }
 
 void loop()
@@ -126,6 +138,7 @@ void loop()
 	}
 }
 
+// Start pulse has been detected; begin a 1-wire packet.
 void owReceive(OneWireSlave::ReceiveEvent evt, byte data)
 {
 	switch (evt)
@@ -142,17 +155,33 @@ void owReceive(OneWireSlave::ReceiveEvent evt, byte data)
 				OWSlave.writeBit(0, true); // send zeros as long as the conversion is not finished
 				break;
 
-			case DS18B20_READ_SCRATCHPAD:
+			case READ_SCRATCHPAD:
 				state = DS_WaitingReset;
-				OWSlave.write((const byte*)scratchpad, 9, 0);
+				OWSlave.write((const byte*)scratchpad, 17, 0);
 				break;
 
-			case DS18B20_WRITE_SCRATCHPAD:
-				
+			case WRITE_SCRATCHPAD:
+				state = DS_WaitingByte;
+				scratchpad_index = 0;
 				break;
 			}
 			break;
 		}
+		case DS_WaitingByte:  //should be into a temporary buffer so the CRC can be checked before destroying the scratchpad.
+			scratchpad[scratchpad_index++] = data;
+			//Read up to 8 bytes into the scratchpad memory + CRC
+			//then wait for reset.
+			if (scratchpad_index<9)
+				break;
+			else
+			{
+				scratchpad_index = 0;
+				state = DS_WaitingReset;
+				break;
+			}
+
+				
+
 		break;
 
 	case OneWireSlave::RE_Reset:
